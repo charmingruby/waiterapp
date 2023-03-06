@@ -1,14 +1,14 @@
 import { model, Schema } from 'mongoose';
 
 export const Order = model('Order', new Schema({
-  name: {
-    table: String,
-    required: true
+  table: {
+    type: String,
+    required: true,
   },
   status: {
     type: String,
     enum: ['WAITING', 'IN PRODUCTION', 'DONE'],
-    default: 'WAITING'
+    default: 'WAITING',
   },
   createdAt: {
     type: Date,
@@ -17,16 +17,16 @@ export const Order = model('Order', new Schema({
   products: {
     required: true,
     type: [{
-      product: {
-        type: Schema.Types.ObjectId,
-        required: true,
-        ref: 'Product'
-      },
-      quantity: {
-        type: Number,
-        default: 1
-      }
+        product: {
+          type: Schema.Types.ObjectId,
+          required: true,
+          ref: 'Product'
+        },
+        quantity: {
+          type: Number,
+          default: 1
+        },
     }],
-  }
+  },
 }));
 
