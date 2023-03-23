@@ -4,8 +4,16 @@ import { Categories } from '../components/Categories';
 import { Menu } from '../components/Menu';
 import { Button } from '../components/Button';
 import { TableModal } from '../components/TableModal';
+import { useState } from 'react';
 
 export function Main() {
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
+  const [selectedTable, setSelectedTable] = useState<string>('');
+
+  const handleSaveTable = (table:string) => {
+    setSelectedTable(table);
+  };
+
   return(
     <>
       <S.Container>
@@ -24,13 +32,16 @@ export function Main() {
 
       <S.Footer>
         <S.FooterContainer>
-          <Button onPress={() => alert('New Order')} disabled>
+          {
+            !selectedTable &&
+            <Button onPress={() => setIsModalVisible(true)}>
             New Order
-          </Button>
+            </Button>
+          }
         </S.FooterContainer>
       </S.Footer>
 
-      <TableModal/>
+      <TableModal visible={isModalVisible} onClose={() => setIsModalVisible(false)} onSave={handleSaveTable}/>
     </>
   );
 }
