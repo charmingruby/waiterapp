@@ -1,8 +1,8 @@
 export const products = [
   {
     _id: '6372e040f52e37ef85fe2c5e',
-    name: 'Pizza quatro queijos',
-    description: 'Deliciosa pizza quatro queijos com borda simples',
+    name: 'Four-Cheese Pizza',
+    description: 'Delicious Pizza with four types of Cheese from Italy.',
     imagePath: '1678025184953-four-cheese.png',
     price: 40,
     ingredients: [
@@ -12,12 +12,12 @@ export const products = [
         _id: '6372e040f52e37ef85fe2c5f'
       },
       {
-        name: 'Parmesão',
+        name: 'Mozzarella',
         icon: '🧀',
         _id: '6372e040f52e37ef85fe2c60'
       },
       {
-        name: 'Gouda',
+        name: 'Parmesan',
         icon: '🧀',
         _id: '6372e040f52e37ef85fe2c61'
       },
@@ -29,9 +29,9 @@ export const products = [
     ],
   },
   {
-    _id: '6372e276a381106c0f854cb3',
-    name: 'Coca cola',
-    description: 'Coca cola lata geladinha topzera',
+    _id: '6405f9548450084e4ea8d7ac',
+    name: 'Coke',
+    description: 'The default Coke to see a good movie.',
     imagePath: '1678113108102-coke.png',
     price: 7,
     ingredients: [],
