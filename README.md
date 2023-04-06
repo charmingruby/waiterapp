@@ -49,7 +49,7 @@ To run APP:
 yarn start
 ```
 
-To run Web:
+- To run Web:
 
 ```bash
 yarn dev
