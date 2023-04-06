@@ -9,9 +9,12 @@ interface Props {
   visible: boolean
   order: Order | null
   onClose: () => void
+  onCancelOrder: () => Promise<void>
+  onChangeOrderStatus: () => Promise<void>;
+  isLoading: boolean
 }
 
-export function OrderModal({ visible, order, onClose }:Props) {
+export function OrderModal({ visible, order, onClose, onCancelOrder, isLoading, onChangeOrderStatus }:Props) {
   useEffect(() => {
     function handleKeyDown(event:KeyboardEvent) {
       if(event.key == 'Escape') {
@@ -47,12 +50,12 @@ export function OrderModal({ visible, order, onClose }:Props) {
           <div>
             <span>
               { order.status === 'WAITING' && '🕑' }
-              { order.status === 'IN_PRODUCTION' && '🧑‍🍳' }
+              { order.status === 'IN PRODUCTION' && '🧑‍🍳' }
               { order.status === 'DONE' && '✅' }
             </span>
             <strong>
               { order.status === 'WAITING' && 'Waiting queue' }
-              { order.status === 'IN_PRODUCTION' && 'In production' }
+              { order.status === 'IN PRODUCTION' && 'In production' }
               { order.status === 'DONE' && 'Done' }
             </strong>
           </div>
@@ -79,11 +82,14 @@ export function OrderModal({ visible, order, onClose }:Props) {
           </div>
         </S.OrderDetails>
         <S.OrderActions>
-          <button type='button' className='primary'>
-            <span>🧑‍🍳</span>
-            <strong>Start Production</strong>
-          </button>
-          <button type='button' className='secondary'>
+
+          { order.status !== 'DONE' &&
+            <button type='button' className='primary' disabled={isLoading} onClick={onChangeOrderStatus}>
+              <span>{order.status=== 'WAITING' ? '🧑‍🍳' : '✅' }</span>
+              <strong>{order.status=== 'WAITING' ? 'Start Production' : 'Complete Order' }</strong>
+            </button>
+          }
+          <button type='button' className='secondary' onClick={onCancelOrder} disabled={isLoading}>
             <strong>Cancel Order</strong>
           </button>
         </S.OrderActions>
