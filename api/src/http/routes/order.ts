@@ -10,4 +10,4 @@ export const OrderRoutes = Router();
 OrderRoutes.get('/orders', ListOrdersController.handle);
 OrderRoutes.post('/orders', CreateOrderController.handle);
 OrderRoutes.patch('/orders/:orderId', ChangeOrderStatusController.handle)
-OrderRoutes.delete( '/orders/:orderId', CancelOrderController.handle);
+OrderRoutes.delete('/orders/:orderId', CancelOrderController.handle);
